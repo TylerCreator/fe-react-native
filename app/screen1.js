@@ -9,7 +9,6 @@ import {
   TouchableOpacity, Image,
 } from 'react-native';
 
-//import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import axios from 'axios';
 import { getEvents } from "./apiFireBase";
 
@@ -37,7 +36,7 @@ export default class screen1 extends Component {
 	clickme=()=>{
 		var data = this.state.PickerValue;
 		if(data==""){
-			alert("Please Select a Option");
+			alert("Please Select a Option");  
 		}else{
 			alert(data);
 		}
