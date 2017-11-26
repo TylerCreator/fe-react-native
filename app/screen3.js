@@ -4,7 +4,8 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,Button,Picker
+  View,Button,Picker,
+  TextInput,
 } from 'react-native';
 import { addEvent } from "./apiFireBase";
 
@@ -12,13 +13,15 @@ export default class screen3 extends Component {
 	constructor(){
 		super();
 		this.state={
+      title:'',
+      description:'',
 			PickerValue:'',
 			events: []
 		}
 		
 	};
-	clickme=()=>{
-    addEvent({title:"kvn",address:"tuz"});
+	clickme=(_title, _description)=>{
+    addEvent({title:_title,address:_description});
 		var data = this.state.PickerValue;
 		if(data==""){
 			alert("Please Select a Option");
@@ -28,21 +31,20 @@ export default class screen3 extends Component {
 		
 	}
   render() {
+   const {title,description} = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-         Screen 1
+         Добавление мероприятия
         </Text>
-		<Picker
-		style={{width:'80%'}}
-		selectedValue={this.state.PickerValue}
-		onValueChange={(itemValue,itemIndex) => this.setState({PickerValue:itemValue})}
-		>
-		<Picker.Item label="Select a option" value=""/>
-		<Picker.Item label="Html" value="html" />
-		<Picker.Item label="Javascript" value="javascript"/>
-		</Picker>
-		<Button title="Click me" onPress={() =>this.clickme()}/>
+    <Text>Введите заголовок</Text>
+    <TextInput style = {{width: '100%',padding: 10}} onChangeText={(title) => this.setState({title})}
+        value={title}/>
+        <Text>Введите описание</Text>
+    <TextInput style = {{width: '100%',padding: 10}} onChangeText={(description) => this.setState({description})}
+        value={description}/>    
+    
+		<Button style={{marginTop: 10}}title="Click me" onPress={() =>this.clickme(title,description)}/>
         
       </View>
     );

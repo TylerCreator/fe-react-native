@@ -10,11 +10,11 @@ import {
 } from 'react-native';
 import { Card } from "nachos-ui";
 
-import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+//import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import axios from 'axios';
 import { getEvents } from "./apiFireBase";
 
-export default class screen1 extends Component{
+export default class screen1 extends Component {
 	constructor(){
 		super();
 		this.state={
