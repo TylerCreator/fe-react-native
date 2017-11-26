@@ -4,7 +4,7 @@ import {
   Platform,
   StyleSheet,
   Text,
-  View,Button,Picker,
+  View,Button,
   TextInput,
 } from 'react-native';
 import { addEvent } from "./apiFireBase";
@@ -15,20 +15,12 @@ export default class screen3 extends Component {
 		this.state={
       title:'',
       description:'',
-			PickerValue:'',
 			events: []
 		}
 		
 	};
 	clickme=(_title, _description)=>{
     addEvent({title:_title,address:_description});
-		var data = this.state.PickerValue;
-		if(data==""){
-			alert("Please Select a Option");
-		}else{
-			alert(data);
-		}
-		
 	}
   render() {
    const {title,description} = this.state;
@@ -44,7 +36,7 @@ export default class screen3 extends Component {
     <TextInput style = {{width: '100%',padding: 10}} onChangeText={(description) => this.setState({description})}
         value={description}/>    
     
-		<Button style={{marginTop: 10}}title="Click me" onPress={() =>this.clickme(title,description)}/>
+		<Button style={{marginTop: 10}}title="Добавить" onPress={() =>this.clickme(title,description)}/>
         
       </View>
     );
