@@ -23,3 +23,6 @@ export function getEvents(callback){
   });
 }
 
+export function addEvent(newEvent){
+  database.ref("/events").push(newEvent);
+}

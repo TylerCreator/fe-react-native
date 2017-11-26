@@ -1,12 +1,12 @@
-
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   Platform,
   StyleSheet,
   RefreshControl,
   Text,
   View,Button,Picker,
-  FlatList
+  FlatList,
+  TouchableOpacity, Image,
 } from 'react-native';
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
@@ -64,9 +64,19 @@ export default class screen1 extends Component{
             onRefresh={this._onRefresh.bind(this)}
           />
         }
-        data={events || []}
+        data={events || []}t
         renderItem={({ item }) => (
-          <Text>{item}</Text>
+          <TouchableOpacity>
+            <Image
+              style={{
+                flex: 1,
+                height: 100,
+                resizeMode: "cover",
+              }}
+              source={{uri: 'https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png'}}
+              />
+            <Text>{item && item.title}</Text>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -90,5 +100,5 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
-  },
+  }
 });

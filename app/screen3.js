@@ -6,7 +6,7 @@ import {
   Text,
   View,Button,Picker
 } from 'react-native';
-import { getEvents } from "./apiFireBase";
+import { addEvent } from "./apiFireBase";
 
 export default class screen3 extends Component {
 	constructor(){
@@ -18,6 +18,7 @@ export default class screen3 extends Component {
 		
 	};
 	clickme=()=>{
+    addEvent({title:"kvn",address:"tuz"});
 		var data = this.state.PickerValue;
 		if(data==""){
 			alert("Please Select a Option");
@@ -41,7 +42,7 @@ export default class screen3 extends Component {
 		<Picker.Item label="Html" value="html" />
 		<Picker.Item label="Javascript" value="javascript"/>
 		</Picker>
-		<Button title="Click me" onPress={this.clickme}/>
+		<Button title="Click me" onPress={() =>this.clickme()}/>
         
       </View>
     );
