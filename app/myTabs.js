@@ -2,7 +2,7 @@ import {TabNavigator} from "react-navigation";
 
 
 //import your tabs js file
-import Screen1 from "./screen1";
+import Screen1 from "./eventNavigator";
 import Screen2 from "./screen2";
 import Screen3 from "./screen3";
 

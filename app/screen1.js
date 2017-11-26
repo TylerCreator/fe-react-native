@@ -47,9 +47,7 @@ export default class screen1 extends Component {
   
   _onRefresh() {
     this.setState({ refreshing: true });
-    getEvents().then(() => {
-      this.setState({ refreshing: false });
-    });
+    getEvents((events) => this.setState({ events, refreshing:false }));
   }
 
   render() {

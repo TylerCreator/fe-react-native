@@ -19,7 +19,7 @@ export function getEvents(callback){
     let events = [];
     Object.keys(rawEvents).map(key => events.push(rawEvents[key]));
     console.log("DTDBG: getEvents", events);
-    callback(events);
+    callback(events.reverse());
   });
 }
 
