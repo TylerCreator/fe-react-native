@@ -8,7 +8,6 @@ import {
   TextInput,
 } from 'react-native';
 import { addEvent } from "./apiFireBase";
-import MapView from 'react-native-maps';
 
 export default class screen3 extends Component {
 	constructor(){
@@ -21,26 +20,12 @@ export default class screen3 extends Component {
 		
   };
   
-  getInitialState() {
-    return {
-      region: {
-        latitude: 37.78825,
-        longitude: -122.4324,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      },
-    };
-  }
-  
-  onRegionChange(region) {
-    this.setState({ region });
-  }
 
-	clickme=(_title, _description,_region)=>{
-    addEvent({title:_title,address:_description,region:_region});
+	clickme=(_title, _description)=>{
+    addEvent({title:_title,address:_description});
 	}
   render() {
-   const {title,description,region} = this.state;
+   const {title,description} = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -52,12 +37,8 @@ export default class screen3 extends Component {
         <Text>Введите описание</Text>
     <TextInput style = {{width: '100%',padding: 10}} onChangeText={(description) => this.setState({description})}
         value={description}/>    
-        <MapView
-        style={{display: 'flex'}}
-      region={this.state.region}
-      onRegionChange={this.onRegionChange}
-    />
-		<Button style={{marginTop: 10}}title="Добавить" onPress={() =>this.clickme(title,description,region)}/>
+        
+		<Button style={{marginTop: 10}}title="Добавить" onPress={() =>this.clickme(title,description)}/>
         
       </View>
     );
