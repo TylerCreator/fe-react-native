@@ -6,8 +6,9 @@ import {
   Text,
   View,Button,Picker,
   FlatList,
-  TouchableOpacity, Image,
+  TouchableOpacity,
 } from 'react-native';
+import { Card } from "nachos-ui";
 
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import axios from 'axios';
@@ -46,7 +47,7 @@ export default class screen1 extends Component{
   
   _onRefresh() {
     this.setState({ refreshing: true });
-    getEv().then(() => {
+    getEvents().then(() => {
       this.setState({ refreshing: false });
     });
   }
@@ -66,16 +67,11 @@ export default class screen1 extends Component{
         }
         data={events || []}t
         renderItem={({ item }) => (
-          <TouchableOpacity>
-            <Image
-              style={{
-                flex: 1,
-                height: 100,
-                resizeMode: "cover",
-              }}
-              source={{uri: 'https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png'}}
-              />
-            <Text>{item && item.title}</Text>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Event", { event: item })}
+            style={{ marginBottom: 20 }}
+            >
+            <Card footerContent={item && item.title} image={"https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png"} />
           </TouchableOpacity>
         )}
       />
