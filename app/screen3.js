@@ -6,14 +6,14 @@ import {
   Text,
   View,Button,Picker
 } from 'react-native';
+import { getEvents } from "./apiFireBase";
 
-
-export default class screen3 extends Component<{}> {
+export default class screen3 extends Component {
 	constructor(){
 		super();
 		this.state={
-			PickerValue:''
-			
+			PickerValue:'',
+			events: []
 		}
 		
 	};

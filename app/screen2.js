@@ -7,17 +7,35 @@ import {
   View,Button,Picker
 } from 'react-native';
 
+import axios from 'axios'
 
-export default class screen2 extends Component<{}> {
+
+axios.get('http://api.hochuna.com/open-events').then(response => {
+  console.log(response.data)
+  // .data is specific to axios and required to recall the correct information
+  // tells the computer to fetch, and upon return perform the next task
+}).catch(response => {
+  console.log("oh no, an error: " + response.message)
+})
+
+
+export default class screen2 extends Component {
 	constructor(){
 		super();
 		this.state={
 			PickerValue:''
 			
-		}
+    };
+    
 		
-	};
+  };
+  getEv() {
+    axios.get('http://api.hochuna.com/open-events').then(function (response) {
+      console.log(response);
+    });
+  }
 	clickme=()=>{
+    this.getEv();
 		var data = this.state.PickerValue;
 		if(data==""){
 			alert("Please Select a Option");
@@ -31,6 +49,7 @@ export default class screen2 extends Component<{}> {
       <View style={styles.container}>
         <Text style={styles.welcome}>
          Screen 1
+         
         </Text>
 		<Picker
 		style={{width:'80%'}}
@@ -41,7 +60,7 @@ export default class screen2 extends Component<{}> {
 		<Picker.Item label="Html" value="html" />
 		<Picker.Item label="Javascript" value="javascript"/>
 		</Picker>
-		<Button title="Click me" onPress={this.clickme}/>
+		<Button title="Click me" onPress={() =>this.clickme()}/>
         
       </View>
     );
